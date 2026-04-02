@@ -1,0 +1,5 @@
+Dans le cadre du projet final en STI2D, nous avons choisi de concevoir et de réaliser une maquette sur la base du B-2 Spirit électrique et pilotable.
+
+La maquette devra être sûre, pilotable et capable de réaliser un vol contrôlé simple (décollage, vol en palier et atterrissage ou posé contrôlé). Elle sera accompagnée d’une documentation technique, comprenant un cahier des charges et d'un dossier technique.  
+
+Dans une approche expérimentale, le B-2 sera utilisé comme plateforme de détection et de suivi de drones simulés. Grâce à une caméra embarquée, l’appareil devra être capable de repérer et de suivre visuellement une cible factice en mouvement. Cette fonctionnalité permet d’illustrer l’intérêt potentiel d’un tel système pour des applications militaires et éviter la perte d'hommes lors des opérations de surveillance faites habituellement par des avions de chasse non-autonomes, tout en montrant qu’un dispositif de ce type peut être conçu de manière relativement simple et rapide par des élèves.
