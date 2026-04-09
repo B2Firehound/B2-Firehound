@@ -13,8 +13,8 @@ HardwareSerial ELRS(1); // On crée un port série UART1 pour communiquer avec l
 #define RXD1 16 // Broche de réception (RX) pour UART1
 #define TXD1 17 // Broche de transmission (TX) pour UART1
 
-int ch1 = 1500; // Canal 1 initialisé à 1500 (position neutre)
-int ch2 = 1500; // Canal 2 initialisé à 1500 (position neutre)
+int ch1 = 1500; // Canal 1 initialisé à 1500
+int ch2 = 1500; // Canal 2 initialisé à 1500
 
 void setup() {
   servo1.attach(SERVO1_PIN); // On attache le servo1 à sa broche
@@ -46,7 +46,7 @@ void loop() {
           bitIndex++; // On passe au bit suivant
         }
 
-        // Conversion du format CRSF (172–1811) vers signal RC standard (1000–2000 µs)
+        // Conversion du format CRSF (172–1811) vers signal RC standard (1000–2000)
         int us = map(val, 172, 1811, 1000, 2000);
 
         // On met à jour les canaux correspondants
@@ -57,6 +57,6 @@ void loop() {
   }
 
   // On envoie les valeurs RC aux servos
-  servo1.writeMicroseconds(ch1); // Canal 1 → servo1
-  servo2.writeMicroseconds(ch2); // Canal 2 → servo2
+  servo1.writeMicroseconds(ch1); // Canal 1 vers servo1
+  servo2.writeMicroseconds(ch2); // Canal 2 vers servo2
 }
