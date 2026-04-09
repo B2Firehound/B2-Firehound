@@ -1,3 +1,6 @@
+B2 Firehound / Marc Girard, Clément Guidat, Paul Scheerlinck, Quentin Blachier​ / 2026
+
+
 #include <HardwareSerial.h>
 
 HardwareSerial ELRS(1); // UART1
