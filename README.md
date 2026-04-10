@@ -35,7 +35,7 @@ Les drones, initialement développés pour des applications militaires, ont une 
 
 Origines des Drones 
 
-Les drones, également appelés véhicules aériens sans pilote (UAV Unmaned Aerial Vehicule : appellation international), ont été conceptualisés pour la première fois durant la Première Guerre mondiale. Cette période a marqué le début des recherches visant à développer des aéronefs capables de voler sans pilote à bord. En 1916, l’ingénieur britannique Archibald Low a développé l’Aerial Target, un projet d’avion-cible sans pilote destiné à des usages militaires. Puis l’année suivante, le Hewitt-Sperry Automatic Airplane est conçu, constituant l’un des premiers exemples d’aéronef contrôlé à distance. Ces innovations ont posé les bases du développement des drones modernes. 
+Les drones, également appelés véhicules aériens sans pilote (UAS Unmaned Aerial System : appellation international), ont été conceptualisés pour la première fois durant la Première Guerre mondiale. Cette période a marqué le début des recherches visant à développer des aéronefs capables de voler sans pilote à bord. En 1916, l’ingénieur britannique Archibald Low a développé l’Aerial Target, un projet d’avion-cible sans pilote destiné à des usages militaires. Puis l’année suivante, le Hewitt-Sperry Automatic Airplane est conçu, constituant l’un des premiers exemples d’aéronef contrôlé à distance. Ces innovations ont posé les bases du développement des drones modernes. 
 
  
 Évolution Technologique 
