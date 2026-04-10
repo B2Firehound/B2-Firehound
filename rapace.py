@@ -80,7 +80,7 @@ class RAPACE:
 
         # Message de mise en route
         self.add_log("SYSTÈME RAPACE OPTIMISÉ - PRÊT")
-        self.update_view()            # Boucle d'affichage
+        self.update_view() # Boucle d'affichage
 
     # On met en place l'interface
     def setup_ui(self):
@@ -95,7 +95,7 @@ class RAPACE:
                                 highlightthickness=2, highlightbackground="#00f5d4")
         self.canvas.pack()
 
-        # on met à droite les logs et les boutons
+        # On met à droite les logs et les boutons
         self.side_panel = tk.Frame(self.main_container, bg="#020c1b")
         self.side_panel.pack(side="right", fill="y", padx=(20, 0))
 
@@ -113,7 +113,7 @@ class RAPACE:
         self.btn_mode = self.create_button("MODE : MANUEL", self.toggle_mode)
         self.btn_cam = self.create_button("SOURCE : INTERNE", self.toggle_camera)
 
-        # Barre de statut en bas
+        # On met la barre de statut en bas
         self.status_frame = tk.Frame(self.root, bg="#001d3d", height=40)
         self.status_frame.pack(fill="x", side="bottom")
         self.status_bar = tk.Label(self.status_frame, text="OPÉRATIONNEL", fg="#fff",
@@ -129,9 +129,9 @@ class RAPACE:
     def add_log(self, message):
         timestamp = datetime.now().strftime("%H:%M:%S")
         self.log_area.insert(tk.END, f"> {timestamp} : {message}\n")
-        self.log_area.see(tk.END)  # Scroll automatique vers le bas
+        self.log_area.see(tk.END)  # Scroll automatique vers le bas pour toujours voir le dernier message ajouté
 
-    # ---------------- TOGGLES ----------------
+    # On définit les options
     def toggle_nv(self):
         self.night_mode = not self.night_mode
         self.btn_nv.config(text=f"VISION NOCTURNE [{'ON' if self.night_mode else 'OFF'}]",
@@ -157,7 +157,7 @@ class RAPACE:
             self.cap = cv2.VideoCapture(0)  # Caméra interne
             self.btn_cam.config(text="SOURCE : INTERNE")
 
-    # ---------------- SOURIS ----------------
+    # Là on met les détailles du controle manuel
     def mouse_move(self, event):
         if not self.auto_mode:
             # Coordonnées normalisées 0-100%
@@ -170,14 +170,14 @@ class RAPACE:
             data = f"{self.servo_x},{self.servo_y}\n"  # Format texte "X,Y"
             self.ser.write(data.encode())              # Envoi série à l’ESP32
 
-    # ---------------- TRACKER ----------------
+    # On définit le tracker
     def init_tracker_module(self):
         try:
             self.tracker = cv2.TrackerKCF_create()           # Tracker KCF classique
         except:
             self.tracker = cv2.legacy.TrackerKCF_create()    # Version legacy si nécessaire
 
-    # ---------------- IA DETECTION ----------------
+    # On définit la détection en IA
     def ia_detection_loop(self):
         while self.running:
             if self.frame is not None:
@@ -199,7 +199,7 @@ class RAPACE:
                     self.target_box = None
             time.sleep(0.05)  # Petit délai pour limiter l’usage CPU
 
-    # ---------------- AFFICHAGE ----------------
+    # On définit l'affichage
     def update_view(self):
         # Lecture caméra
         ret, frame = self.cap.read()
@@ -207,7 +207,7 @@ class RAPACE:
             self.root.after(10, self.update_view)
             return
 
-        # Miroir si activé
+        # Miroir caméra
         if self.flip_view:
             frame = cv2.flip(frame, 1)
 
@@ -257,21 +257,21 @@ class RAPACE:
                     color = (0, 255, 0)
                     progress = 0
 
-                # Dessin de la boîte de suivi
+                # Dessin de la boîte verte qui détecte le drone
                 self.draw_target_box(display_frame, x, y, w, h, color)
                 cv2.rectangle(display_frame, (x, y + h + 8), (x + int(w * progress), y + h + 12), color, -1)
             else:
                 self.is_tracking = False
                 self.reset_lock()
 
-        # Dessin HUD
+        # Toujours le dessin
         self.draw_flight_hud(display_frame)
         img = Image.fromarray(cv2.cvtColor(display_frame, cv2.COLOR_BGR2RGB))
         imgtk = ImageTk.PhotoImage(img)
         self.canvas.create_image(0, 0, anchor=tk.NW, image=imgtk)
         self.canvas.image = imgtk
 
-        # Mise à jour barre statut
+        # Là c'est les messages pour prévenir le pilote du statut du verrouillage
         if self.lock_confirmed:
             self.status_bar.config(text="LOCK CONFIRMÉ", bg="#9b2226")
         elif self.sound_playing:
@@ -287,7 +287,7 @@ class RAPACE:
             self.sound_playing = False
         self.lock_confirmed = False
 
-    # ---------------- HUD ----------------
+    # Là on dessine la boite et on donne les infos
     def draw_target_box(self, frame, x, y, w, h, color):
         # Dessin coins boîte cible
         l = 15
@@ -311,7 +311,7 @@ class RAPACE:
         cv2.putText(frame, f"X: {int(self.servo_x)}% Y: {int(self.servo_y)}%", (20, 460),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.4, color, 1)
 
-# --- Lancement application ---
+# C'est pour lancer l'application
 if __name__ == "__main__":
     root = tk.Tk()
     app = RAPACE(root)
